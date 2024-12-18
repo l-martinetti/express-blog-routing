@@ -9,7 +9,11 @@ router.get('/', (req, res) => {
 })
 //show
 router.get('/:id', (req, res) => {
-    res.send(`Mostra post a id ${req.params.id}`)
+    const index = parseInt(req.params.id); 
+
+     if (index >= 0 && index < posts.length) {
+         res.json(posts[index]); 
+     } 
 })
 //store
 router.post('/', (req, res) => {
