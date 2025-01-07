@@ -8,12 +8,11 @@ router.get('/', (req, res) => {
     res.json(posts)
 })
 //show
-router.get('/:id', (req, res) => {
-    const index = parseInt(req.params.id); 
-
-     if (index >= 0 && index < posts.length) {
-         res.json(posts[index]); 
-     } 
+router.get('/:slug', (req, res) => {
+    const slug = req.params.slug;
+    const post = posts.find( post => post.slug === slug);
+    
+    res.json(post)
 })
 //store
 router.post('/', (req, res) => {
